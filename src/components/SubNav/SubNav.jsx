@@ -22,7 +22,13 @@ const SubNav = () => {
           Tomorrow
         </button>
         <button
-          className={`text-lg ${activeTab === 'Next 7 Days' ? 'text-white' : 'text-gray-400'}`}
+          className={`text-lg ${
+            activeTab === 'Next 7 Days'
+              ? darkMode
+                ? 'text-white'
+                : 'text-gray-600'
+              : 'text-gray-400'
+          }`}
           onClick={() => setActiveTab('Next 7 Days')}
         >
           Next 7 Days
