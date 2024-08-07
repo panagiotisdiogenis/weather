@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useState, useEffect, useCallback, useMemo } from 'react';
 import axios from 'axios';
 
 export const WeatherContext = createContext();
