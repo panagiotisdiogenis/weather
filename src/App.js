@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { WeatherProvider, WeatherContext } from './contexts/WeatherContext';
 import { DarkModeProvider, DarkModeContext } from './contexts/DarkModeContext';
-import Forecast from './components/Forecast';
-import Nav from './components/Nav';
-import SubNav from './components/SubNav';
-import Loading from './components/Loading';
-import Overview from './components/Overview';
+import Forecast from './components/Forecast/Forecast';
+import Nav from './components/Nav/Nav';
+import SubNav from './components/SubNav/SubNav';
+import Loading from './components/Loading/Loading';
+import Overview from './components/Overview/Overview';
 import './index.css';
 
 function AppContent() {
@@ -13,8 +13,12 @@ function AppContent() {
   const { darkMode } = useContext(DarkModeContext);
 
   return (
-    <div className={`min-h-screen p-6 ${darkMode ? 'bg-zinc-950 text-white' : 'bg-white text-black'}`}>
-      {loading ? <Loading /> : (
+    <div
+      className={`min-h-screen p-6 ${darkMode ? 'bg-zinc-950 text-white' : 'bg-white text-black'}`}
+    >
+      {loading ? (
+        <Loading />
+      ) : (
         <div className="p-4">
           <Nav />
           <SubNav />

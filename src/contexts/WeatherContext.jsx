@@ -1,5 +1,5 @@
-import React, { createContext, useState, useEffect, useCallback, useMemo } from 'react';
-import axios from 'axios';
+import React, { createContext, useState, useEffect, useCallback } from 'react';
+import { fetchForecast, fetchCurrentWeather } from '../services/weatherService';
 
 export const WeatherContext = createContext();
 
@@ -8,28 +8,27 @@ export const WeatherProvider = ({ children }) => {
   const [locationData, setLocationData] = useState({});
   const [loading, setLoading] = useState(true);
 
-  const locations = useMemo(() => ["Beijing", "California", "Dubai", "Charlottetown"], []);
-
   const fetchWeather = useCallback(async (location) => {
+    const locations = ['Beijing', 'California', 'Dubai', 'Charlottetown'];
+
     try {
       setLoading(true);
-      const response = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${location}&days=7`);
+      const response = await fetchForecast(location);
       setWeatherData(response.data);
 
-      const locationPromises = locations.map(async (loc) => {
-        const locResponse = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${loc}`);
-        return { [loc]: locResponse.data };
-      });
-
+      const locationPromises = locations.map((loc) => fetchCurrentWeather(loc));
       const locData = await Promise.all(locationPromises);
-      setLocationData(Object.assign({}, ...locData));
-
+      const locationDataObj = locData.reduce((acc, locRes, idx) => {
+        acc[locations[idx]] = locRes.data;
+        return acc;
+      }, {});
+      setLocationData(locationDataObj);
     } catch (error) {
-      console.error("Error fetching weather data:", error);
+      console.error('Error fetching weather data:', error);
     } finally {
       setLoading(false);
     }
-  }, [locations]);
+  }, []);
 
   useEffect(() => {
     const getCurrentLocation = () => {
@@ -40,7 +39,7 @@ export const WeatherProvider = ({ children }) => {
             fetchWeather(`${latitude},${longitude}`);
           },
           (error) => {
-            console.error("Error getting current location:", error);
+            console.error('Error getting current location:', error);
             fetchWeather('New York'); // Fallback to a default location if location access is denied
           }
         );
@@ -53,7 +52,9 @@ export const WeatherProvider = ({ children }) => {
   }, [fetchWeather]);
 
   return (
-    <WeatherContext.Provider value={{ weatherData, locationData, loading, fetchWeather }}>
+    <WeatherContext.Provider
+      value={{ weatherData, locationData, loading, fetchWeather }}
+    >
       {children}
     </WeatherContext.Provider>
   );
