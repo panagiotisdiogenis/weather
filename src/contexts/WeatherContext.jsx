@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useCallback, useMemo } from 'react';
+import React, { createContext, useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 export const WeatherContext = createContext();
@@ -13,11 +13,11 @@ export const WeatherProvider = ({ children }) => {
   const fetchWeather = useCallback(async (location) => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${location}&days=7`);
+      const response = await axios.get(`https://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${location}&days=7`);
       setWeatherData(response.data);
 
       const locationPromises = locations.map(async (loc) => {
-        const locResponse = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${loc}`);
+        const locResponse = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${loc}`);
         return { [loc]: locResponse.data };
       });
 
