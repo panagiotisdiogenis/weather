@@ -15,7 +15,7 @@ const Search = () => {
 
   return (
     <form
-      role="form"
+      role="search"
       onSubmit={handleSubmit}
       className="relative p-4 w-full max-w-lg"
     >

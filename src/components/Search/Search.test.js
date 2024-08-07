@@ -18,7 +18,7 @@ describe('Search', () => {
     );
 
     const input = screen.getByPlaceholderText('Search City');
-    const form = screen.getByRole('form');
+    const form = screen.getByRole('search');
 
     fireEvent.change(input, { target: { value: 'New York' } });
     expect(input.value).toBe('New York');

@@ -119,7 +119,7 @@ const Overview = () => {
             backgroundImage: `url(${process.env.PUBLIC_URL}/getting-started.jpeg)`,
           }}
         >
-          <div className="opacity-60 font-extrabold text-xl text-black text-center rounded-lg bg-white py-4">
+          <div className="opacity-65 font-extrabold text-xl text-black text-center rounded-lg bg-white py-4">
             Explore global map of wind weather and ocean condition
           </div>
           <button className="bg-white text-black font-bold rounded-lg py-6 mt-4 transform transition-transform duration-300 hover:scale-105">

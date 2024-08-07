@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { WeatherContext } from '../../contexts/WeatherContext';
 import { DarkModeContext } from '../../contexts/DarkModeContext';
 import CurrentDayWeather from '../CurrentDayWeather/CurrentDayWeather';
+import WeatherGraph from '../WeatherGraph/WeatherGraph';
 
 const Forecast = () => {
   const { weatherData } = useContext(WeatherContext);
@@ -46,9 +47,9 @@ const Forecast = () => {
             onClick={() =>
               setSelectedDay({
                 date: day.date,
-                temp_c: day.day.avgtemp_c,
+                temp_f: day.day.avgtemp_f,
                 condition: day.day.condition,
-                feelslike_c: day.day.feelslike_c,
+                feelslike_f: day.hour[0].feelslike_f,
                 wind_kph: day.day.maxwind_kph,
                 pressure_mb: day.day.pressure_mb,
                 humidity: day.day.avghumidity,
@@ -75,6 +76,7 @@ const Forecast = () => {
           </div>
         ))}
       </div>
+      <WeatherGraph />
     </div>
   );
 };
