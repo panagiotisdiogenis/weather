@@ -31,10 +31,10 @@ const WeatherGraph = () => {
         {forecastHours.map((hour, index) => (
           <div key={index} className="flex flex-col items-center w-12">
             <div
-              className={`absolute bottom-6 w-4 ${darkMode ? 'bg-zinc-500' : 'bg-blue-500'}`}
+              className="absolute bottom-6 w-4 bg-blue-500"
               style={{
                 height: `${calculateBarHeight(hour.chance_of_rain)}%`,
-                transition: 'height 0.3s ease-in-out', // Smooth transition for height change
+                transition: 'height 0.3s ease-in-out',
               }}
             />
             <div className="mt-2 text-sm relative">

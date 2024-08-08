@@ -67,7 +67,7 @@ const Forecast = () => {
               <img
                 src={day.day.condition.icon}
                 alt={day.day.condition.text}
-                className="w-12 h-12 group-hover:animate-bounce"
+                className="w-12 h-12 group-hover:animate-bounce animate-pulse"
               />
             </div>
             <div className="text-2xl font-bold mb-2">

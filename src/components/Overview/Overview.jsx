@@ -51,7 +51,7 @@ const Overview = () => {
               <div className="text-lg">Wind Status</div>
             </div>
             <div className="flex justify-center items-center flex-1">
-              <WiStrongWind size={64} className="group-hover:animate-bounce" />
+              <WiStrongWind size={64} className="group-hover:animate-bounce animate-pulse" />
             </div>
             <div className="absolute bottom-6 left-6 text-4xl font-bold">
               {wind_kph.toFixed(1)} km/h
@@ -67,7 +67,7 @@ const Overview = () => {
               <div className="text-lg">Humidity</div>
             </div>
             <div className="flex justify-center items-center flex-1">
-              <WiHumidity size={64} className="group-hover:animate-bounce" />
+              <WiHumidity size={64} className="group-hover:animate-bounce animate-pulse" />
             </div>
             <div className="absolute bottom-6 left-6 text-4xl font-bold">
               {humidity}%
@@ -86,7 +86,7 @@ const Overview = () => {
             </div>
             <div className="flex justify-center items-center flex-1">
               <div className="flex justify-center items-center flex-1">
-                <WiDaySunny size={64} className="group-hover:animate-bounce" />
+                <WiDaySunny size={64} className="group-hover:animate-bounce animate-pulse" />
               </div>
             </div>
             <div className="absolute bottom-6 left-6 text-4xl font-bold">
@@ -103,7 +103,7 @@ const Overview = () => {
               <div className="text-lg">Visibility</div>
             </div>
             <div className="flex justify-center items-center flex-1">
-              <WiFog size={64} className="group-hover:animate-bounce" />
+              <WiFog size={64} className="group-hover:animate-bounce animate-pulse" />
             </div>
             <div className="absolute bottom-6 left-6 text-4xl font-bold">
               {vis_km.toFixed(1)} km
@@ -143,7 +143,7 @@ const Overview = () => {
                 <img
                   src={location.data.current.condition.icon}
                   alt={location.data.current.condition.text}
-                  className="w-12 h-12 group-hover:animate-bounce"
+                  className="w-12 h-12 group-hover:animate-bounce animate-pulse"
                 />
               </div>
             </div>

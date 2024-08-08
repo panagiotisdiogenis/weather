@@ -34,15 +34,25 @@ const CurrentDayWeather = ({ details }) => {
           <img
             src={condition.icon}
             alt={condition.text}
-            className="w-16 h-16"
+            className="w-16 h-16 animate-pulse"
           />
         </div>
         <div className="text-sm mb-2">
-          Real Feel: {Math.round(feelslike_f)}°
+          <span className="text-zinc-600">Real Feel: </span>
+          <span className="font-semibold">{Math.round(feelslike_f)}°</span>
         </div>
-        <div className="text-sm mb-2">Wind: {Math.round(wind_kph)} km/h</div>
-        <div className="text-sm mb-2">Pressure: {pressure_mb} MB</div>
-        <div className="text-sm mb-2">Humidity: {humidity}%</div>
+        <div className="text-sm mb-2">
+          <span className="text-zinc-600">Wind: </span>
+          <span className="font-semibold">{Math.round(wind_kph)} km/h</span>
+        </div>
+        <div className="text-sm mb-2">
+          <span className="text-zinc-600">Pressure: </span>
+          <span className="font-semibold">{pressure_mb} MB</span>
+        </div>
+        <div className="text-sm mb-2">
+          <span className="text-zinc-600">Humidity: </span>
+          <span className="font-semibold">{humidity}%</span>
+        </div>
       </div>
     </div>
   );
