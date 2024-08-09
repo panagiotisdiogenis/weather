@@ -6,7 +6,7 @@ const WeatherGraph = () => {
   const { weatherData } = useContext(WeatherContext);
   const { darkMode } = useContext(DarkModeContext);
 
-  if (!weatherData || !weatherData.forecast) {
+  if (!weatherData || !weatherData.forecast || !weatherData.forecast.forecastday[0].hour) {
     return <div className="p-4">No weather data available</div>;
   }
 

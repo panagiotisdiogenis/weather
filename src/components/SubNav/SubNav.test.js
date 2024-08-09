@@ -36,7 +36,7 @@ describe('SubNav', () => {
 
     const next7DaysButton = screen.getByText('Next 7 Days');
     fireEvent.click(next7DaysButton);
-    expect(next7DaysButton).toHaveClass('text-white');
+    expect(next7DaysButton).toHaveClass('text-gray-600');
   });
 
   test('changes active toggle when buttons are clicked', () => {

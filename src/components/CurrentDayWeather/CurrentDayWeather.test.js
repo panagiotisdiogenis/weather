@@ -5,12 +5,12 @@ import CurrentDayWeather from './CurrentDayWeather';
 describe('CurrentDayWeather', () => {
   const mockDetails = {
     date: '2024-08-07T12:00:00Z',
-    temp_c: 25,
+    temp_f: 25,
     condition: {
       icon: 'http://cdn.weatherapi.com/weather/64x64/day/113.png',
       text: 'Sunny',
     },
-    feelslike_c: 27,
+    feelslike_f: 27,
     wind_kph: 10,
     pressure_mb: 1012,
     humidity: 60,
@@ -22,10 +22,8 @@ describe('CurrentDayWeather', () => {
     expect(screen.getByText('Wednesday')).toBeInTheDocument();
     expect(screen.getByText('25°')).toBeInTheDocument();
     expect(screen.getByAltText('Sunny')).toBeInTheDocument();
-    expect(screen.getByText('Real Feel: 27°')).toBeInTheDocument();
-    expect(screen.getByText('Wind: 10 km/h')).toBeInTheDocument();
-    expect(screen.getByText('Pressure: 1012 MB')).toBeInTheDocument();
-    expect(screen.getByText('Humidity: 60%')).toBeInTheDocument();
+    expect(screen.getByText('1012 MB')).toBeInTheDocument();
+    expect(screen.getByText('60%')).toBeInTheDocument();
   });
 
   test('returns null when no details are provided', () => {

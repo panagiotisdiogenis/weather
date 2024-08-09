@@ -6,22 +6,28 @@ import Forecast from './Forecast';
 
 const mockWeatherData = {
   location: { name: 'New York', region: 'New York' },
-  current: { temp_c: 20 },
+  current: { temp_f: 20 },
   forecast: {
     forecastday: [
       {
         date: '2024-08-07',
         day: {
-          avgtemp_c: 20,
+          avgtemp_f: 20,
           condition: {
             text: 'Sunny',
             icon: 'http://cdn.weatherapi.com/weather/64x64/day/113.png',
           },
-          feelslike_c: 22,
+          feelslike_f: 22,
           maxwind_kph: 10,
           pressure_mb: 1012,
           avghumidity: 60,
         },
+        hour: [
+          {
+            time: '2024-08-07 00:00',
+            feelslike_f: 22,
+          },
+        ],
         astro: {
           sunrise: '6:00 AM',
           sunset: '8:00 PM',
@@ -30,16 +36,22 @@ const mockWeatherData = {
       {
         date: '2024-08-08',
         day: {
-          avgtemp_c: 25,
+          avgtemp_f: 25,
           condition: {
             text: 'Partly cloudy',
             icon: 'http://cdn.weatherapi.com/weather/64x64/day/116.png',
           },
-          feelslike_c: 27,
+          feelslike_f: 27,
           maxwind_kph: 12,
           pressure_mb: 1010,
           avghumidity: 65,
         },
+        hour: [
+          {
+            time: '2024-08-08 00:00',
+            feelslike_f: 27,
+          },
+        ],
         astro: {
           sunrise: '6:01 AM',
           sunset: '8:01 PM',
@@ -47,7 +59,7 @@ const mockWeatherData = {
       },
     ],
   },
-};
+};  
 
 const renderComponent = (darkMode = false) => {
   return render(
