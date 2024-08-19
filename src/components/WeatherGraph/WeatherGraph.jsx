@@ -17,7 +17,7 @@ const WeatherGraph = () => {
     const maxValue = 130;
     return ((value / maxValue) * 100) + 1;
   };
-console.log(forecastHours)
+
   return (
     <div className={`relative p-4 w-full max-w-lg rounded-2xl h-72 ${darkMode ? 'bg-zinc-900 text-white' : 'bg-zinc-200 text-black'}`}>
       <div className="absolute left-4 top-4 bottom-4 flex flex-col justify-between py-4">
